@@ -1,11 +1,13 @@
-<a href='/resume'>My resume</a>
+<a href='{% url 'resume:index' %}'>My Resume</a>
+<br/>
+<a href='{% url 'resume:award' %}'>My Award</a>
 
 {% if resume_list %}
     <ul>
         {% for resume in resume_list %}
             <li>{{ resume.name }}</li>
         {% endfor %}
-    <ul>
+    </ul>
 {% else %}
     <li>No resumes are available</li>
 {% endif %}
