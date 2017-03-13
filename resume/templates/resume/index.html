@@ -1,11 +1,17 @@
-<a href='{% url 'resume:index' %}'>My Resume</a>
-<br/>
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'resume/style.css' %}" /> 
+
+<img src= "{% static "resume/images/RedHat.png" %}" alt="My image"/><br/>
+
+<a href='{% url 'resume:index' %}'>My Resume</a><br/>
+
 <a href='{% url 'resume:award' %}'>My Award</a>
 
 {% if resume_list %}
     <ul>
         {% for resume in resume_list %}
-            <li>{{ resume.name }}</li>
+            <li>{{ resume.education }}</li>
         {% endfor %}
     </ul>
 {% else %}
