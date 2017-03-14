@@ -10,9 +10,16 @@ from django.http import HttpResponse
 
 from .models import BasicInformation
 
+class IndexView(generic.ListView):
+    model = BasicInformation
+    template_name = "resume/index.html"
+    context_object_name = "basic_information_list"
+
+
+
 def index(request):
     return render(request, 'resume/index.html',
-        context={'resume_list': BasicInformation.objects.all()}
+        context={'basic_information': BasicInformation.objects.all()}
     )
 
 def award(request):

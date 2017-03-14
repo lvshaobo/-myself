@@ -8,12 +8,12 @@
 
 <a href='{% url 'resume:award' %}'>My Award</a>
 
-{% if resume_list %}
+{% if basic_information_list %}
     <ul>
-        {% for resume in resume_list %}
-            <li>{{ resume.education }}</li>
+        {% for basic_information in basic_information_list %}
+            <li>{{ basic_information.education }}</li>
         {% endfor %}
     </ul>
 {% else %}
-    <li>No resumes are available</li>
+    <li>No basic information are available</li>
 {% endif %}

@@ -1,10 +1,10 @@
 from django.conf.urls import url
 
-from . import views
+from .views import *
 
 app_name = 'resume'
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
-    url(r'^award$', views.award, name='award'),
+    url(r'^$', IndexView.as_view(), name='index'),
+    url(r'^award$', award, name='award'),
 ]
