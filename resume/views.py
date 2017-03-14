@@ -5,9 +5,6 @@ from django.shortcuts import render
 # Create your views here.
 
 from django.views import generic
-
-from django.http import HttpResponse
-
 from .models import BasicInformation
 
 class IndexView(generic.ListView):
@@ -16,11 +13,14 @@ class IndexView(generic.ListView):
     context_object_name = "basic_information_list"
 
 
-
 def index(request):
     return render(request, 'resume/index.html',
         context={'basic_information': BasicInformation.objects.all()}
     )
+
+class AwardView(generic.ListView):
+    model = BasicInformation
+    context_object_name = "basic_information_list"
 
 def award(request):
     return render(request, 'resume/award.html',
