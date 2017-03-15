@@ -15,14 +15,25 @@ class IndexView(generic.ListView):
 
 def index(request):
     return render(request, 'resume/index.html',
-        context={'basic_information': BasicInformation.objects.all()}
+        context={'basic_information_list': BasicInformation.objects.all()}
     )
+
 
 class AwardView(generic.ListView):
     model = BasicInformation
     context_object_name = "basic_information_list"
 
+
 def award(request):
     return render(request, 'resume/award.html',
-        context={'basic_list': BasicInformation.objects.all()}
+        context={'basic_information_list': BasicInformation.objects.all()}
     )
+
+
+class IndexTemplateView(generic.TemplateView):
+    template_name = "resume/index-template-view.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super(IndexTemplateView, self).get_context_data(**kwargs)
+        context['basic_information_list'] = BasicInformation.objects.all()
+        return context
